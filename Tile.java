@@ -5,4 +5,10 @@ public class Tile extends Point {
         super(x, y);
         tileColor = color;
     }
+    public void setTileColor(TileColor tileColr) {
+        this.tileColor = tileColr;
+    }
+    public TileColor getTileColor() {
+        return tileColor;
+    }
 }
