@@ -10,7 +10,7 @@ javac Langton.java && java Langton
 ### A word on quality
 ```
 WARNING: This is NOT high quality java code.
-This is code completely igores at least half 
+This code completely igores at least half of
 the principles of object oriented programming.
 getters and setters? Hah. Everything is declared 
 public. Objects change the internal state of other 
