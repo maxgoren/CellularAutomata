@@ -1,5 +1,7 @@
 
 public enum TileColor {
     WHITE,
-    BLACK;
+    BLACK,
+    GREEN,
+    BLUE;
 }

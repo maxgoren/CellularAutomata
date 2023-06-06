@@ -20,36 +20,14 @@ public class World {
         numIters = maxIters;
         ants = new LinkedList<Ant>();
         Random rng = new Random();
+        List<Direction> dirs = List.of(Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST);
         for (int i = 0; i < numAnts; i++) {
-            ants.add(new Ant(rng.nextInt(WIDTH), rng.nextInt(HEIGHT), Direction.NORTH, HEIGHT, WIDTH));
+            ants.add(new Ant(rng.nextInt(WIDTH), rng.nextInt(HEIGHT), dirs.get(rng.nextInt(dirs.size())), HEIGHT, WIDTH));
         }
     }
     void doStep() {
-        for (int i = 0; i < numIters; i++)
-        for (Ant ant : ants) {
-            ant.move(grid);
+        for (int i = 0; i < numIters; i++) {
+            ants.forEach(ant -> ant.move(grid));
         }
     }
-    /*
-    DPRECTAED: 6/5/2023
-    void show() {
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
-                if (ant.location.y == i && ant.location.x == j) {
-                    System.out.print("%");
-                } else {
-                    switch (grid[i][j].tileColor) {
-                        case BLACK:
-                            System.out.print(".");
-                            break;
-                        case WHITE:
-                            System.out.print(" ");
-                            break;
-                    }
-                }
-            }
-            System.out.println();
-        }
-    }
-    */
 }
