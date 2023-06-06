@@ -2,6 +2,9 @@
 Java implementation of multi-termite version of Langton's ant
 using Javas Swing library for output.
 
+## To Run
+javac Langton.java && java Langton
+
 ```
 WARNING: This is NOT high quality java code.
 This is code completely igores at least half 
