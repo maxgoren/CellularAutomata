@@ -26,8 +26,6 @@ public class World {
         }
     }
     void doStep() {
-        for (int i = 0; i < numIters; i++) {
             ants.forEach(ant -> ant.move(grid));
-        }
     }
 }
