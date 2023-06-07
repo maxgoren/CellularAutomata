@@ -8,6 +8,7 @@ public class World {
     public Tile[][] grid;
     public List<Ant> ants;
     public int numIters;
+    public StateMaps stateMaps;
     public World(int maxIters, int numAnts, int ht, int wt) {
         HEIGHT = ht;
         WIDTH = wt;
@@ -19,10 +20,17 @@ public class World {
         }  
         numIters = maxIters;
         ants = new LinkedList<Ant>();
+        stateMaps = new StateMaps();
         Random rng = new Random();
         List<Direction> dirs = List.of(Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST);
         for (int i = 0; i < numAnts; i++) {
-            ants.add(new Ant(rng.nextInt(WIDTH), rng.nextInt(HEIGHT), dirs.get(rng.nextInt(dirs.size())), HEIGHT, WIDTH));
+            int sx = 0, sy = 0;
+            do {
+                sx = rng.nextInt(WIDTH);
+                sy = rng.nextInt(HEIGHT);
+            } while (grid[sy][sx].occupied == true);
+            grid[sy][sx].occupied = true;
+            ants.add(new Ant(sx, sy, i, dirs.get(rng.nextInt(dirs.size())), HEIGHT, WIDTH, stateMaps));
         }
     }
     void doStep() {
