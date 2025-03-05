@@ -1,9 +1,9 @@
 import java.util.HashMap;
 
 public class StateMaps {
-    public final HashMap<Direction, Direction> rightTurns;
-    public final HashMap<Direction, Direction> leftTurns;
-    public final HashMap<TileColor, RulePair> rules;
+    private final HashMap<Direction, Direction> rightTurns;
+    private final HashMap<Direction, Direction> leftTurns;
+    private final HashMap<TileColor, RulePair> rules;
     public StateMaps() {
         rightTurns = new HashMap<>();
         leftTurns = new HashMap<>();
@@ -24,5 +24,14 @@ public class StateMaps {
         rules.put(TileColor.BLUE, new RulePair(TurnDirection.LEFT, TileColor.RED));
         rules.put(TileColor.RED, new RulePair(TurnDirection.LEFT, TileColor.MAGENTA));
         rules.put(TileColor.MAGENTA, new RulePair(TurnDirection.RIGHT, TileColor.BLACK));
+    }
+    public HashMap<Direction, Direction> getLeftTurns() {
+        return leftTurns;
+    }
+    public HashMap<Direction, Direction> getRightTurns() {
+        return rightTurns;
+    }
+    public HashMap<TileColor, RulePair> getRules() {
+        return rules;
     }
 }

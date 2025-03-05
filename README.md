@@ -6,8 +6,3 @@ using Javas Swing library for output.
 ```
 java Langton.java
 ```
-
-### A word on quality
-```
-WARNING: This is NOT high quality java. It completely ignores practically all conventions of OOP.
-```

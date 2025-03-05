@@ -3,12 +3,12 @@ import java.util.List;
 import java.util.Random;
 
 public class World {
-    public static int HEIGHT; 
-    public static int WIDTH;
+    private int HEIGHT; 
+    private int WIDTH;
     public Tile[][] grid;
-    public List<Ant> ants;
-    public int numIters;
-    public StateMaps stateMaps;
+    private List<Ant> ants;
+    private int numIters;
+    private StateMaps stateMaps;
     public World(int maxIters, int numAnts, int ht, int wt) {
         HEIGHT = ht;
         WIDTH = wt;
@@ -28,12 +28,21 @@ public class World {
             do {
                 sx = rng.nextInt(WIDTH);
                 sy = rng.nextInt(HEIGHT);
-            } while (grid[sy][sx].occupied == true);
-            grid[sy][sx].occupied = true;
+            } while (grid[sy][sx].isOccupied());
+            grid[sy][sx].setOccupied(true);
             ants.add(new Ant(sx, sy, i, dirs.get(rng.nextInt(dirs.size())), HEIGHT, WIDTH, stateMaps));
         }
     }
     void doStep() {
             ants.forEach(ant -> ant.move(grid));
+    }
+    public int getHeight() {
+        return HEIGHT;
+    }
+    public int getWidth() {
+        return WIDTH;
+    }
+    public List<Ant> getAnts() {
+        return ants;
     }
 }

@@ -8,7 +8,7 @@ import javax.swing.Timer;
 
 public class AnimationPanel extends JPanel {
     private static final int ZOOM = 4;
-    World world;
+    private World world;
     HashMap<TileColor,Color> colorMap;
     public class actionListener implements ActionListener {
         private int counter;
@@ -41,15 +41,18 @@ public class AnimationPanel extends JPanel {
     @Override
     public void paint(Graphics g) {
         world.doStep();
-        for (int y = 0; y < world.HEIGHT; y++) {
-            for (int x = 0; x < world.WIDTH; x++) {
-                g.setColor(colorMap.get(world.grid[y][x].tileColor));
+        for (int y = 0; y < world.getHeight(); y++) {
+            for (int x = 0; x < world.getWidth(); x++) {
+                g.setColor(colorMap.get(world.grid[y][x].getTileColor()));
                 g.fillRect(x * ZOOM, y * ZOOM, ZOOM, ZOOM);
             }
         }
-        for (Ant ant : world.ants) {
+        for (Ant ant : world.getAnts()) {
             g.setColor(Color.RED);
-            g.fillRect(ant.location.x * ZOOM, ant.location.y * ZOOM, ZOOM, ZOOM);
+            g.fillRect(ant.getLocation().getX() * ZOOM, ant.getLocation().getY() * ZOOM, ZOOM, ZOOM);
         }
+    }
+    public World getWorld() {
+        return world;
     }
 }
